@@ -14,6 +14,9 @@ class PCS:
             if c.lower() in ['exit', 'quit']:
                 Exit = True
             os.system(f"proxychains {c}")
+            
+    def gui():
+        ''
 
 
 if __name__ == '__main__':
