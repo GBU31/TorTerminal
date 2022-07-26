@@ -1,4 +1,6 @@
 import os
+import subprocess
+import dearpygui.dearpygui as dpg
 
 class PCS:
     def startProxychains(self):
@@ -15,10 +17,28 @@ class PCS:
                 Exit = True
             os.system(f"proxychains {c}")
             
-    def gui():
-        ''
+    def GUI(self):
+        dpg.create_context()
+        
+        
+        def Run():
+            output = subprocess.check_output(dpg.get_value('command').split()).decode()
+            print(output)
+            dpg.add_text(output, parent='win')
+            
+
+        with dpg.window(label="ProxyChainsShell", width=600, height=300, tag='win'):
+            
+            dpg.add_button(label='Run', callback=Run)
+            dpg.add_input_text(label='Command', tag='command')
+            
+
+        dpg.create_viewport(title='ProxyChainsShell', width=600, height=200)
+        dpg.setup_dearpygui()
+        dpg.show_viewport()
+        dpg.start_dearpygui()
+        dpg.destroy_context()
 
 
 if __name__ == '__main__':
-    PCS().text()
-
+    PCS().GUI()
