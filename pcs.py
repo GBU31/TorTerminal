@@ -20,7 +20,6 @@ class PCS:
         dpg.create_context()
         
         def Run():
-            # print(['proxychains'] + dpg.get_value('command').split())
             output = subprocess.check_output(['proxychains'] + dpg.get_value('command').split()).decode()
             print(output)
             dpg.add_text(output, parent='win')
