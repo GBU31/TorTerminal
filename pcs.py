@@ -1,5 +1,4 @@
-import os
-import subprocess
+import subprocess,argparse, os
 import dearpygui.dearpygui as dpg
 
 class PCS:
@@ -20,9 +19,9 @@ class PCS:
     def GUI(self):
         dpg.create_context()
         
-        
         def Run():
-            output = subprocess.check_output(dpg.get_value('command').split()).decode()
+            # print(['proxychains'] + dpg.get_value('command').split())
+            output = subprocess.check_output(['proxychains'] + dpg.get_value('command').split()).decode()
             print(output)
             dpg.add_text(output, parent='win')
             
@@ -32,7 +31,6 @@ class PCS:
             dpg.add_button(label='Run', callback=Run)
             dpg.add_input_text(label='Command', tag='command')
             
-
         dpg.create_viewport(title='ProxyChainsShell', width=600, height=200)
         dpg.setup_dearpygui()
         dpg.show_viewport()
@@ -41,4 +39,15 @@ class PCS:
 
 
 if __name__ == '__main__':
-    PCS().GUI()
+    parser = argparse.ArgumentParser(description='GUI or Text')
+    parser.add_argument('-m', dest='m', metavar='-m',help='GUI or Text')
+    args = parser.parse_args()
+    os.system('clear')
+    if args.m.lower() == 'text':
+        PCS().text()
+
+    elif args.m.lower() == 'gui':
+        PCS().GUI()
+
+    else:
+        print('./pcs.py -m gui or text')
