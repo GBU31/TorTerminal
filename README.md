@@ -3,5 +3,5 @@
 
 ```
 ./install.sh
-./pcs.py -m gui or text
+python3 pcs.py -m gui or text
 ```
