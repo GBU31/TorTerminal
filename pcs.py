@@ -1,6 +1,6 @@
 #! /bin/python3
 
-import subprocess,argparse, os
+import subprocess,argparse, os, multiprocessing, time
 import dearpygui.dearpygui as dpg
 
 class PCS:
@@ -18,7 +18,7 @@ class PCS:
                 Exit = True
             os.system(f"proxychains {c}")
             
-    def GUI(self):
+    def GUI2(self):
         dpg.create_context()
         
         def Run():
@@ -39,6 +39,22 @@ class PCS:
         dpg.show_viewport()
         dpg.start_dearpygui()
         dpg.destroy_context()
+        
+    def GUI(self):
+        
+        def run_server():
+            os.system('python3 core/gui/manage.py runserver')
+
+        def run_qt():
+            time.sleep(10)
+            os.system('python3 core/qt')
+
+
+        server = multiprocessing.Process(target=run_server)
+        qt = multiprocessing.Process(target=run_qt)
+        server.start()
+        qt.start()
+        
 
 
 if __name__ == '__main__':
