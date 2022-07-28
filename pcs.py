@@ -2,11 +2,11 @@ import subprocess,argparse, os
 import dearpygui.dearpygui as dpg
 
 class PCS:
-    def startProxychains(self):
+    def startTor(self):
         os.system('sudo service tor start')
         
     def text(self):
-        self.startProxychains()
+        self.startTor()
         username = os.popen('id -u -n').readline().strip()
         Exit = False
         
@@ -22,15 +22,17 @@ class PCS:
         def Run():
             output = subprocess.check_output(['proxychains'] + dpg.get_value('command').split()).decode()
             print(output)
-            dpg.add_text(output, parent='win')
+            dpg.add_text(output, parent='output')
             
 
-        with dpg.window(label="ProxyChainsShell", width=600, height=300, tag='win'):
-            
-            dpg.add_button(label='Run', callback=Run)
+        with dpg.window(label="ProxyChainsShell", width=600, height=300):
             dpg.add_input_text(label='Command', tag='command')
+            dpg.add_button(label='Run', callback=Run)
+            with dpg.window(label="output", width=200, height=300, tag='output', pos=(100, 100)):
+                dpg.add_text('output:')
             
-        dpg.create_viewport(title='ProxyChainsShell', width=600, height=200)
+            
+        dpg.create_viewport(title='ProxyChainsShell', width=200, height=200)
         dpg.setup_dearpygui()
         dpg.show_viewport()
         dpg.start_dearpygui()
