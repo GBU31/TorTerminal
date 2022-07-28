@@ -3,6 +3,6 @@ if __name__ == '__main__':
 
     
     app = QApplication(sys.argv)
-    QApplication.setApplicationName('pcs')
+    QApplication.setApplicationName('proxychainsShell')
     window = MainWindow()
     app.exec_()
