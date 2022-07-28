@@ -18,7 +18,7 @@ class PCS:
                 Exit = True
             os.system(f"proxychains {c}")
             
-    def GUI2(self):
+    def GUI_imgui(self):
         dpg.create_context()
         
         def Run():
