@@ -1,6 +1,6 @@
 # proxychainsShell
 
 ```
-bash install.sh
+./install.sh
 ./pcs.py -m gui or text
 ```
