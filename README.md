@@ -2,6 +2,6 @@
 
 
 ```
-bash install.sh
-python3 pcs.py
+./install.sh
+./pcs.py -m gui or text
 ```

@@ -1,3 +1,5 @@
+#! /bin/python3
+
 import subprocess,argparse, os
 import dearpygui.dearpygui as dpg
 
