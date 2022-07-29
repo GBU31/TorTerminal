@@ -59,7 +59,7 @@ class PCS:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='GUI or Text')
-    parser.add_argument('-m', dest='m', metavar='-m',help='GUI or Text')
+    parser.add_argument('-m', dest='m', metavar='-m',help='pcs.py -m gui or text')
     args = parser.parse_args()
     os.system('clear')
     if args.m.lower() == 'text':
@@ -69,4 +69,4 @@ if __name__ == '__main__':
         PCS().GUI()
 
     else:
-        print('./pcs.py -m gui or text')
+        print('pcs.py -m gui or text')
