@@ -6,6 +6,8 @@
     <title>ProxyChainsShell</title>
 </head>
 <style>
+
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css";
     *,
 *::after,
 *::before {
@@ -442,6 +444,28 @@ canvas{
     text-align: center;
     font-size: 2em;
 }
+
+.bn3 {
+  display: inline-block;
+  padding: 0.5em 1.7em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgb(255, 255, 255);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.253);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.bn3:hover {
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+
 @keyframes move {
 		0% {
 			right: 5000px;
@@ -543,13 +567,14 @@ canvas{
     <script>document.documentElement.className = 'js';</script>
         </head>
         <body class="demo-11">
-    
+			
+			
             <div id="connecting-dots" class="connecting-dots">
                     <canvas id="canvas"></canvas>
             </div>
     
-            <div class="search search--open" style="margin-top:-40%;">
-				
+            <div class="search search--open" style="margin-top:-10%;">
+				<br>
                 <div class="terminal">
 					<form class="search__form" method="post">
 						{%csrf_token%}
@@ -559,7 +584,17 @@ canvas{
                     <p >{{out}}</p>
 					{%endif%}
                 </div>
-                
+				<br>
+
+				{%if not root%}
+				<a href="/root_privilege"><button class="bn3">root</button></a>
+
+				{%else%}
+				<a href="/"><button class="bn3">back</button></a>
+				{%endif%}
+				
+				
+
             </div><!-- /search -->
     
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
