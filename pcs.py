@@ -46,7 +46,7 @@ class PCS:
             os.system('python3 core/gui/manage.py runserver')
 
         def run_qt():
-            time.sleep(10)
+            time.sleep(8)
             os.system('python3 core/qt')
 
 
