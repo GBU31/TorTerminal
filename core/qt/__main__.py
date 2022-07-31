@@ -1,8 +1,11 @@
+import os
+from win import *
+
+
 if __name__ == '__main__':
-    from win import *
 
     
     app = QApplication(sys.argv)
-    QApplication.setApplicationName('proxychainsShell')
+    QApplication.setApplicationName(f"proxychainsShell-{os.popen('id -u -n').readline().strip()}")
     window = MainWindow()
     app.exec_()

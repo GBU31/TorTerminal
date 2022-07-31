@@ -1,40 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import subprocess, os
 
 def win(request):
     if request.method == 'POST':
         try:
             if 'clear' in request.POST['command'].split():
-                return render(request, 'win.html')
-
+                return redirect("/")
+                
             if "cd" in request.POST['command'].split():
                 print(request.POST['command'].split()[1])
                 os.chdir(request.POST['command'].split()[1])
-                return render(request, 'win.html')
-
+                return redirect("/")
             output = subprocess.check_output(['proxychains'] + request.POST['command'].split()).decode()
-            return render(request, 'win.html', {'out':output})
+            return render(request, 'win.html', {'out':output, 'User':os.popen('id -u -n').readline().strip()})
         except:
             pass
         
-    return render(request, 'win.html')
+    return render(request, 'win.html', {'User':os.popen('id -u -n').readline().strip()})
 
 
 def root_privilege(request):
     if request.method == 'POST':
         try:
             if 'clear' in request.POST['command'].split():
-                return render(request, 'win.html', {'root':True})
+                return redirect('/root_privilege')
 
             if "cd" in request.POST['command'].split():
                 print(request.POST['command'].split()[1])
                 os.chdir(request.POST['command'].split()[1])
-                return render(request, 'win.html', {'root':True})
-
+                return redirect('/root_privilege')
             output = subprocess.check_output(['sudo', 'proxychains'] + request.POST['command'].split()).decode()
-            return render(request, 'win.html', {'out':output, 'root':True})
+            return render(request, 'win.html', {'out':output, 'root':True, 'User':os.popen('id -u -n').readline().strip()})
         except:
             pass
         
-    return render(request, 'win.html', {'root':True})
+    return render(request, 'win.html', {'root':True, 'User':os.popen('id -u -n').readline().strip()})
 

@@ -576,6 +576,7 @@ canvas{
             <div class="search search--open" style="margin-top:-10%;">
 				<br>
                 <div class="terminal">
+					{{User}}
 					<form class="search__form" method="post">
 						{%csrf_token%}
 							<input class="search__input" id="command_id" name="command" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></input>
@@ -587,7 +588,7 @@ canvas{
 				<br>
 
 				{%if not root%}
-				<a href="/root_privilege"><button class="bn3">root</button></a>
+				<a href="/root_privilege"><button class="bn3" style="background-color: red;">root</button></a>
 
 				{%else%}
 				<a href="/"><button class="bn3">back</button></a>
