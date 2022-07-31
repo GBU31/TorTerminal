@@ -21,8 +21,7 @@ body {
 	height: fit-content;
 	color: #a0a2ae;
 	background: #000;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	
 }
 
 .main-wrap {
@@ -31,11 +30,9 @@ body {
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	height: 100vh;
 	background-color: #000;
-
 	background-repeat: no-repeat;
-	background-position: 50% 10em;
+	
 	background-size: 75% auto;
 }
 
@@ -116,7 +113,7 @@ a,
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100vh;
+	
 	pointer-events: none;
 }
 
@@ -157,7 +154,7 @@ a,
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	padding: 3em;
+	padding: -50%;
 }
 span.green{
 	color: #34fc47;
@@ -169,7 +166,7 @@ span.green{
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100vh;
+	height: 70%;
 }
 
 .btn--search-close {
@@ -191,7 +188,7 @@ span.green{
 }
 
 .search__form::before {
-	content: '>';
+	content: '{{User}}>';
 }
 
 .search__input {
@@ -572,30 +569,33 @@ canvas{
             <div id="connecting-dots" class="connecting-dots">
                     <canvas id="canvas"></canvas>
             </div>
-    
-            <div class="search search--open" style="margin-top:-10%;">
-				<br>
+			
+            <div class="search search--open" style="margin-top:-20%;">
+				
                 <div class="terminal">
+					
 					<form class="search__form" method="post">
 						{%csrf_token%}
 							<input class="search__input" id="command_id" name="command" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></input>
 					</form>
-					{%if out%}
-                    <p >{{out}}</p>
-					{%endif%}
                 </div>
 				<br>
 
 				{%if not root%}
-				<a href="/root_privilege"><button class="bn3">root</button></a>
+				<a href="/root_privilege"><button class="bn3" style="background-color: red;">root</button></a>
 
 				{%else%}
 				<a href="/"><button class="bn3">back</button></a>
 				{%endif%}
 				
-				
+			
 
-            </div><!-- /search -->
+            </div>
+
+			{%if out%}
+					{{out}}
+					{%endif%}
+			
     
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/easing/EasePack.min.js"></script>
