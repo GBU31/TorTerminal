@@ -2,6 +2,7 @@
 
 
 ```
+git clone https://github.com/brookehorizon/proxychainsShell.git
 ./install.sh
 python3 pcs.py -m gui or text
 ```
