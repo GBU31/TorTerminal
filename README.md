@@ -1,4 +1,4 @@
-# TorTerminal
+# ```TorTerminal```
 
 
 ```
@@ -7,7 +7,7 @@ git clone https://github.com/brookehorizon/torterminal.git
 ./pcs.py -m gui or text
 ```
 
-# GUI (PyQt5)
+# ```GUI (PyQt5)```
 ```
 ./pcs.py -m gui
 ```
