@@ -1,8 +1,8 @@
-# proxychainsShell
+# TorTerminal
 
 
 ```
-git clone https://github.com/brookehorizon/proxychainsShell.git
+git clone https://github.com/brookehorizon/torterminal.git
 ./install.sh
 python3 pcs.py -m gui or text
 ```
